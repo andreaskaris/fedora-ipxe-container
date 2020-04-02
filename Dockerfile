@@ -10,3 +10,4 @@ RUN mkdir /tftpboot/menu
 COPY boot.ipxe /tftpboot/menu/boot.ipxe
 COPY dnsmasq.conf /etc/dnsmasq.conf
 COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ./entrypoint.sh
