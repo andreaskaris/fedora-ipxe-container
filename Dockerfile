@@ -11,4 +11,5 @@ COPY boot.ipxe /tftpboot/menu/boot.ipxe
 COPY dnsmasq.conf.j2 /dnsmasq.conf.j2
 COPY config /config
 COPY entrypoint.sh /entrypoint.sh
+COPY render_config.py /render_config.py
 ENTRYPOINT ./entrypoint.sh
