@@ -4,6 +4,7 @@ from jinja2 import Template
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import os 
 import glob
+import re
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 config_path = dir_path
@@ -19,16 +20,21 @@ Parse config files with syntax key=value
 def parse_config():
   v = {}
   parse_config_file(v,config_file)
+  parse_environment(v)
   return v
 
 def parse_config_file(v,config_file):
-  try:
     with open(config_file) as myfile:
         for line in myfile:
             name, var = line.partition("=")[::2]
             v[name.strip()] = var.strip()
-  except:
-    pass
+
+def parse_environment(v):
+    for key in v:
+        try:
+            v[key] = os.environ[key]
+        except:
+            pass
 
 cfg = parse_config()
 
