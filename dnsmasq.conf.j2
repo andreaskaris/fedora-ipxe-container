@@ -1,0 +1,54 @@
+PXE_LISTEN_ADDRESS=192.168.123.1
+PXE_INTERFACE=eth0
+PXE_DHCP_RANGE=192.168.123.200,192.168.123.250,255.255.255.0,24h
+PXE_GATEWAY=3,192.168.123.1
+PXE_DOMAIN_NAME=example.com
+PXE_BROADCAST=192.168.123.255
+
+# enable logs if required
+#log-queries
+#log-dhcp
+
+# disable DNS server
+port=0
+
+listen-address={{ PXE_LISTEN_ADDRESS }}
+interface={{ PXE_INTERFACE }}
+
+# enable built-in tftp server
+enable-tftp
+tftp-root=/tftpboot
+
+
+# DHCP range 192.168.123.200 ~ 192.168.123.250
+dhcp-range={{ PXE_DHCP_RANGE }}
+
+# Default gateway
+dhcp-option=3,{{ PXE_GATEWAY }}
+
+# Domain name - homelab.net
+dhcp-option=15,{{ PXE_DOMAIN_NAME }}
+
+# Broadcast address
+dhcp-option=28,{{ PXE_BROADCAST }}
+
+# Set interface MTU to 9000 bytes (jumbo frame)
+# Enable only when your network supports it
+# dhcp-option=26,9000
+
+# Tag dhcp request from iPXE
+dhcp-match=set:ipxe,175
+
+# inspect the vendor class string and tag BIOS client
+dhcp-vendorclass=BIOS,PXEClient:Arch:00000
+
+# 1st boot file - Legacy BIOS client
+dhcp-boot=tag:!ipxe,tag:BIOS,undionly.kpxe,192.168.123.1
+
+# 1st boot file - EFI client
+# at the moment all non-BIOS clients are considered
+# EFI client
+dhcp-boot=tag:!ipxe,tag:!BIOS,ipxe.efi,192.168.123.1
+
+# 2nd boot file
+dhcp-boot=tag:ipxe,menu/boot.ipxe

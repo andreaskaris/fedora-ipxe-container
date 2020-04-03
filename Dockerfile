@@ -1,6 +1,6 @@
 FROM fedora
 
-RUN yum install ipxe-bootimgs dnsmasq iproute -y
+RUN yum install ipxe-bootimgs dnsmasq iproute procps-ng -y
 RUN mkdir /tftpboot
 # RUN chcon -t tftpdir_t /tftpboot
 RUN mkdir /httpboot
