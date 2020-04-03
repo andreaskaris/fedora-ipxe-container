@@ -15,7 +15,7 @@ for menu_dir in menu_dirs:
     menu_entry = os.path.basename(menu_dir)
     menu_items += 'item ' + menu_entry + '\n'
 
-    menu_entries += ':' + menu_entry + '\n'
+    menu_entries += ':' + menu_entry + ' ' + menu_entry +  '\n'
     boot_menu_entry_file = open(menu_dir + '/boot-menu-entry', 'r')
     menu_entries += boot_menu_entry_file.read() + '\n'
     boot_menu_entry_file.close()
