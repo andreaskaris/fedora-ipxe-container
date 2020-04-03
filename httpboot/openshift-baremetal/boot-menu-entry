@@ -1,8 +1,0 @@
-set server_address {{ PXE_LISTEN_ADDRESS }}
-set initrd {{ INITRD }}
-set kernel {{ KERNEL }}
-kernel ${kernel} inst.repo=${server_root}/ ip=dhcp ipv6.disable initrd=${initrd}
-
-kernel ${kernel} ip=dhcp rd.neednet=1 initrd=${initrd} console=tty0 console=ttyS0 coreos.inst=yes coreos.inst.install_dev=sda coreos.inst.image_url=http://${server_address}/rhcos.raw.gz coreos.inst.ignition_url=http://${ server_address}/bootstrap.ign
-initrd ${initrd}
-boot
