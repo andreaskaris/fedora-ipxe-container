@@ -1,0 +1,4 @@
+set initrd {{ INITRD }}
+set kernel {{ KERNEL }}
+kernel ${kernel} inst.repo=${server_root}/ ip=dhcp ipv6.disable initrd=${initrd}
+boot
