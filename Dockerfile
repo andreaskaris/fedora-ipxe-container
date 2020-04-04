@@ -1,6 +1,6 @@
 FROM fedora
 
-RUN yum install ipxe-bootimgs dnsmasq iproute procps-ng python3-jinja2 httpd -y
+RUN yum install ipxe-bootimgs dnsmasq iproute procps-ng python3-jinja2 httpd python3-inotify_simple -y
 RUN mkdir /tftpboot
 # RUN chcon -t tftpdir_t /tftpboot
 RUN mkdir /httpboot
