@@ -1,4 +1,4 @@
-set server_root http://192.168.123.1/centos8/
+set server_root http://{{ PXE_LISTEN_ADDRESS }}/centos8/
 initrd ${server_root}/kernel/initrd.img
 kernel ${server_root}/kernel/vmlinuz inst.repo=${server_root}/files ip=dhcp ipv6.disable initrd=initrd.img inst.geoloc=0 devfs=nomount
 boot

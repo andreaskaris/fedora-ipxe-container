@@ -32,6 +32,9 @@ logs :
 stop :
 	podman stop fedora-pxe-server
 
+start :
+	podman start fedora-pxe-server
+
 remove-container : stop
 	podman rm fedora-pxe-server
 
