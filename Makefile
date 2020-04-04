@@ -35,5 +35,7 @@ stop :
 remove-container : stop
 	podman rm fedora-pxe-server
 
-clean : remove-container
+remove-image :
 	podman image rm localhost/fedora-ipxe-server
+
+clean : remove-container remove-image
