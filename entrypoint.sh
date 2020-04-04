@@ -16,10 +16,10 @@ mv dnsmasq.conf /etc/dnsmasq.conf
 # run httpd
 # making my life easier - just link this instead of reconfiguring httpd
 # needs to be unlink as on container restart this would be a link not a dir
-if [ -d /var/www/html ] ; then
-  rmdir /var/www/html
-else
+if [[ -L "/var/www/html" && -d "/var/www/html" ]] ; then
   unlink /var/www/html
+else
+  rmdir /var/www/html
 fi
 ln -s /httpboot /var/www/html
 /usr/sbin/httpd -DFOREGROUND &
