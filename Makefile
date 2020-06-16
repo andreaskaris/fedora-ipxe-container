@@ -6,7 +6,7 @@ run :
 	--network host \
 	--privileged \
 	-v /httpboot:/httpboot \
-	--name fedora-pxe-server \
+	--name fedora-ipxe-server \
 	localhost/fedora-ipxe-server
 
 run-custom-env :
@@ -21,23 +21,23 @@ run-custom-env :
 	-e PXE_DOMAIN_NAME=example.net \
 	-e PXE_BROADCAST=192.168.124.255 \
 	-e PXE_DNS_SERVERS=8.8.8.8,8.8.4.4 \
-	--name fedora-pxe-server \
+	--name fedora-ipxe-server \
 	localhost/fedora-ipxe-server
 
 connect :
-	podman exec -it fedora-pxe-server /bin/bash
+	podman exec -it fedora-ipxe-server /bin/bash
 
 logs :
-	podman logs -f fedora-pxe-server
+	podman logs -f fedora-ipxe-server
 
 stop :
-	podman stop fedora-pxe-server
+	podman stop fedora-ipxe-server
 
 start :
-	podman start fedora-pxe-server
+	podman start fedora-ipxe-server
 
 remove-container : stop
-	podman rm fedora-pxe-server
+	podman rm fedora-ipxe-server
 
 remove-image :
 	podman image rm localhost/fedora-ipxe-server

@@ -28,7 +28,7 @@ podman run -d \
 -e PXE_DOMAIN_NAME=example.net \
 -e PXE_BROADCAST=192.168.124.255 \
 -e PXE_DNS_SERVERS=8.8.8.8,8.8.4.4 \
---name fedora-pxe-server \
+--name fedora-ipxe-server \
 localhost/fedora-ipxe-server
 ~~~
 
