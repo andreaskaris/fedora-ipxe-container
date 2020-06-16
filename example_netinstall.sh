@@ -5,7 +5,7 @@ curl -L -o /tmp/fedora.iso "https://download.fedoraproject.org/pub/fedora/linux/
 mkdir /mnt/fedora
 mount -o loop /tmp/fedora.iso /mnt/fedora/
 mkdir /httpboot/fedora
-\cp /mnt/images/pxeboot/* /httpboot/fedora/.
+\cp /mnt/fedora/images/pxeboot/* /httpboot/fedora/.
 umount /mnt/fedora
 cat << 'EOF' > /httpboot/fedora/boot-menu-entry 
 set server_root http://{{ PXE_LISTEN_ADDRESS }}/fedora/
