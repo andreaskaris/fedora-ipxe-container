@@ -32,6 +32,12 @@ podman run -d \
 localhost/fedora-ipxe-server
 ~~~
 
+* If you need an example netinstall for testing, you can use:
+~~~
+make example-net-install
+~~~
+> You may need to adjust `example_netinstall.sh`
+
 # Sources
 
 * [https://dustymabe.com/2019/01/04/easy-pxe-boot-testing-with-only-http-using-ipxe-and-libvirt/](https://dustymabe.com/2019/01/04/easy-pxe-boot-testing-with-only-http-using-ipxe-and-libvirt/)

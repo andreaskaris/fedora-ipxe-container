@@ -24,6 +24,9 @@ run-custom-env :
 	--name fedora-ipxe-server \
 	localhost/fedora-ipxe-server
 
+example-net-install:
+	bash example_netinstall.sh
+
 connect :
 	podman exec -it fedora-ipxe-server /bin/bash
 
