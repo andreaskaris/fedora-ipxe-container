@@ -19,6 +19,8 @@ dhcp-range={{ PXE_DHCP_RANGE }}
 # Default gateway
 dhcp-option=3,{{ PXE_GATEWAY }}
 
+dhcp-option=6,{{ PXE_DNS_SERVERS }}
+
 # Domain name - homelab.net
 dhcp-option=15,{{ PXE_DOMAIN_NAME }}
 
