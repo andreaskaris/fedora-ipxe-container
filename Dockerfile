@@ -8,6 +8,7 @@ RUN mkdir /dhcphosts
 RUN cp /usr/share/ipxe/undionly.kpxe /tftpboot
 RUN cp /usr/share/ipxe/ipxe-x86_64.efi /tftpboot/ipxe.efi
 RUN mkdir /tftpboot/menu
+RUN sed -i 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf
 COPY render_boot_ipxe.py /render_boot_ipxe.py
 COPY dnsmasq.conf.j2 /dnsmasq.conf.j2
 COPY config /config

@@ -9,14 +9,14 @@ mount -o loop /tmp/fedora.iso /mnt/fedora
 \cp /httpboot/fedora/dvd/images/pxeboot/* /httpboot/fedora/.
 umount /mnt/fedora
 cat << 'EOF' > /httpboot/fedora/boot-menu-entry 
-set server_root http://{{ PXE_LISTEN_ADDRESS }}/fedora/
+set server_root http://{{ PXE_LISTEN_ADDRESS }}:{{ PXE_LISTEN_PORT }}/fedora/
 initrd ${server_root}/initrd.img
 kernel ${server_root}/vmlinuz ip=dhcp ipv6.disable initrd=initrd.img inst.ks=${server_root}/kickstart.cfg
 boot
 EOF
 source config 
 cat << EOF > /httpboot/fedora/kickstart.cfg
-url --url http://${PXE_LISTEN_ADDRESS}/fedora/dvd/
+url --url http://${PXE_LISTEN_ADDRESS}:${PXE_LISTEN_PORT}/fedora/dvd/
 timezone --utc America/New_York
 lang en_US.UTF-8
 keyboard us
