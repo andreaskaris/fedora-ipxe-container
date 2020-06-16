@@ -2,8 +2,10 @@
 
 echo "Installing Fedora PXE boot image for debugging"
 curl -L -o /tmp/fedora.iso "https://download.fedoraproject.org/pub/fedora/linux/releases/32/Server/x86_64/iso/Fedora-Server-dvd-x86_64-32-1.6.iso"
+mkdir /mnt/fedora
 mkdir /httpboot/fedora/dvd -p
-mount -o loop /tmp/fedora.iso /httpboot/fedora/dvd/
+mount -o loop /tmp/fedora.iso /mnt/fedora
+\cp -a /mnt/fedora/* /httpboot/fedora/dvd/.
 \cp /httpboot/fedora/dvd/images/pxeboot/* /httpboot/fedora/.
 umount /mnt/fedora
 cat << 'EOF' > /httpboot/fedora/boot-menu-entry 
@@ -14,8 +16,10 @@ boot
 EOF
 source config 
 cat << EOF > /httpboot/fedora/kickstart.cfg
-url --url http://${PXE_LISTEN_ADDRESS }/fedora/dvd/
-network --bootproto=dhcp --device=bootif
+url --url http://${PXE_LISTEN_ADDRESS}/fedora/dvd/
+timezone --utc America/New_York
+lang en_US.UTF-8
+keyboard us
 rootpw --plaintext password
 reboot
 firstboot --disable
