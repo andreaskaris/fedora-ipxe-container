@@ -11,7 +11,7 @@
 mv dnsmasq.conf /etc/dnsmasq.conf
 
 # run dnsmasq
-/usr/sbin/dnsmasq -k --log-facility=/dev/stdout &
+/usr/sbin/dnsmasq -k --dhcp-hostsdir=/dhcphosts --log-facility=/dev/stdout &
 
 # run httpd
 # making my life easier - just link this instead of reconfiguring httpd

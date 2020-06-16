@@ -7,6 +7,9 @@
 make build
 ~~~
 
+* Create directory /dhcphosts
+Use this as a directory for dnsmasq --dhcp-hostsdir= entries
+
 * Create directory /httpboot
 Each sub-directory is a menuentry (see httpboot dir for an example)
 

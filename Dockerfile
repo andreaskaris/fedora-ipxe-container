@@ -4,6 +4,7 @@ RUN yum install ipxe-bootimgs dnsmasq iproute procps-ng python3-jinja2 httpd pyt
 RUN mkdir /tftpboot
 # RUN chcon -t tftpdir_t /tftpboot
 RUN mkdir /httpboot
+RUN mkdir /dhcphosts
 RUN cp /usr/share/ipxe/undionly.kpxe /tftpboot
 RUN cp /usr/share/ipxe/ipxe-x86_64.efi /tftpboot/ipxe.efi
 RUN mkdir /tftpboot/menu

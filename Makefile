@@ -6,6 +6,7 @@ run :
 	--network host \
 	--privileged \
 	-v /httpboot:/httpboot \
+	-v /dhcphosts:/dhcphosts \
 	--name fedora-ipxe-server \
 	localhost/fedora-ipxe-server
 
@@ -14,6 +15,7 @@ run-custom-env :
 	--network host \
 	--privileged \
 	-v /httpboot:/httpboot \
+	-v /dhcphosts:/dhcphosts \
 	-e PXE_LISTEN_ADDRESS=192.168.124.1 \
 	-e PXE_INTERFACE=eth1 \
 	-e PXE_DHCP_RANGE=192.168.124.200,192.168.124.250,255.255.255.0,24h \
