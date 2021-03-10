@@ -45,8 +45,13 @@ dhcp-boot=tag:!ipxe,tag:BIOS,undionly.kpxe,{{ PXE_LISTEN_ADDRESS }}
 # EFI client
 dhcp-boot=tag:!ipxe,tag:!BIOS,ipxe.efi,{{ PXE_LISTEN_ADDRESS }}
 
+{% if PXE_URL_OVERRIDE is defined and PXE_DHCP6_RANGE|length %}
+# 2nd boot file
+dhcp-boot=tag:ipxe,{{ PXE_URL_OVERRIDE }}
+{% else %}
 # 2nd boot file
 dhcp-boot=tag:ipxe,menu/boot.ipxe
+{% endif %}
 
 {% if PXE_DHCP6_RANGE is defined and PXE_DHCP6_RANGE|length %}
 enable-ra
