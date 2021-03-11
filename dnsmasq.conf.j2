@@ -30,6 +30,9 @@ dhcp-option=28,{{ PXE_BROADCAST }}
 # Set interface MTU to 9000 bytes (jumbo frame)
 # Enable only when your network supports it
 # dhcp-option=26,9000
+{% if PXE_MTU is defined and PXE_MTU|length %}
+dhcp-option-force=26,{{ PXE_MTU }}
+{% endif %}
 
 # Tag dhcp request from iPXE
 dhcp-match=set:ipxe,175
